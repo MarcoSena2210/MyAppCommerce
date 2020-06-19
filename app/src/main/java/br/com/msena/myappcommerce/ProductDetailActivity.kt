@@ -11,7 +11,15 @@ class ProductDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
+       /* Colocando a seta para voltar, é colocado a ?
+          porque esse objeto pode ser null, para funcionar precisa
+          subscrever o metodo onSupportNavigateUp   */
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }
