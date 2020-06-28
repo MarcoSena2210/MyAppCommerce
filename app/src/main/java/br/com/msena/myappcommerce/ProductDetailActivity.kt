@@ -17,6 +17,7 @@ class ProductDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    /* Subscrevendo o metodo para volta ao ser clicado a seta  */
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
