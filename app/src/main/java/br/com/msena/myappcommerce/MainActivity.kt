@@ -2,8 +2,10 @@ package br.com.msena.myappcommerce
 
 import android.content.Intent
 import android.os.Bundle
+import android.service.quicksettings.Tile
 import android.view.MenuItem
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
+    lateinit var textTile: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        /* Para não ficar os dois titulos da barra.O da App e o do produto   */
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        /* Pega o titulo do app da string gravada   */
+        textTile = findViewById(R.id.toolbar_title)
+        textTile.text = getString(R.string.app_name)
+
+
 
         drawerLayout = findViewById(R.id.nav_drawer_layout)
 
