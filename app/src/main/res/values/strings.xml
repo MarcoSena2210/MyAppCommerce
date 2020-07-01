@@ -13,8 +13,7 @@
     <string name="previous">Previous</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="product_detail_button_comprar">COMPRAR</string>
-    <string name="product_detail_descricao">Descrição</string>
+
 
     <!-- Menu Drawer -->
     <string name="menu_drawer_home">Home</string>
@@ -25,5 +24,19 @@
     <string name="menu_drawer_sair">Sair</string>
     <string name="toggle_open">Open</string>
     <string name="toggle_close">close</string>
+
+    <!-- Detalhe do Produto -->
+    <string name="product_detail_cor">Cor</string>
+    <string name="product_detail_tamanho">Tamanho</string>
+    <string name="product_detail_button_comprar">COMPRAR</string>
+    <string name="product_detail_descricao">Descrição</string>
+
+    <!-- Cadastro de Usuario -->
+    <string name="user_register_cadastrar">CADASTRAR</string>
+    <string name="user_register_senha">Senha</string>
+    <string name="user_register_email">Email</string>
+    <string name="user_register_nome">Nome</string>
+    <string name="user_register_title">Cadastro de Usuário</string>
+
 
 </resources>
