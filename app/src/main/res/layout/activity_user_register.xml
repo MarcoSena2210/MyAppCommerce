@@ -79,15 +79,13 @@
 
     <!--  Botão Cadastrar  -->
     <Button
+        style="@style/Widget.MaterialComponents.Chip.Choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/user_register_cadastrar"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
-        style="@style/Widget.MaterialComponents.Chip.Choice"
-        />
-
+        android:text="@string/user_register_cadastrar" />
 
 
 </LinearLayout>

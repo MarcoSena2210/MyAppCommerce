@@ -5,14 +5,15 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 
-class UserRegisterActivity : AppCompatActivity() {
+class UserProfileActivity : AppCompatActivity() {
+
     /* Titulo da barra*/
     lateinit var toolbar: Toolbar
     lateinit var textTitle : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_register)
+        setContentView(R.layout.activity_user_profile)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(this.toolbar)
@@ -25,7 +26,7 @@ class UserRegisterActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         textTitle = findViewById(R.id.toolbar_title)
-        textTitle.text = getString(R.string.user_register_title)
+        textTitle.text =getString(R.string.user_profile_title)
 
     }
 
