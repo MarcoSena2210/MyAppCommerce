@@ -2,7 +2,6 @@ package br.com.msena.myappcommerce
 
 import android.content.Intent
 import android.os.Bundle
-import android.service.quicksettings.Tile
 import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -12,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import br.com.msena.myappcommerce.ProductDetailActivity
-import br.com.msena.myappcommerce.R
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -21,7 +18,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
-    lateinit var textTile: TextView
+    lateinit var textTitle: TextView
+    lateinit var textLogin: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +31,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         /* Para não ficar os dois titulos da barra.O da App e o do produto   */
         supportActionBar?.setDisplayShowTitleEnabled(false)
         /* Pega o titulo do app da string gravada   */
-        textTile = findViewById(R.id.toolbar_title)
-        textTile.text = getString(R.string.app_name)
-
+        textTitle = findViewById(R.id.toolbar_title)
+        textTitle.text = getString(R.string.app_name)
 
 
         drawerLayout = findViewById(R.id.nav_drawer_layout)
@@ -43,20 +40,28 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toggle: ActionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.toggle_open, R.string.toggle_close)
         drawerLayout.addDrawerListener(toggle)
 
-        drawerLayout.addDrawerListener(toggle)
-
         toggle.syncState()
 
         navigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
+        /* Tela  ProductDetailActivity  */
         val productItem: LinearLayout = findViewById(R.id.ll_product_item)
         productItem.setOnClickListener{
             val intent: Intent = Intent(this, ProductDetailActivity::class.java)
             startActivity(intent)
         }
+
+        textTitle
+        textLogin = navigationView.getHeaderView(0).findViewById(R.id.header_profile_name)
+        textLogin.setOnClickListener {
+            val intent = Intent(this, UserLoginActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
+    /* Voltar  */
     override fun onBackPressed() {
 
         if (drawerLayout.isDrawerOpen(GravityCompat.START))
