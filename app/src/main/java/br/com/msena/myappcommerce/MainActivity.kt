@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.msena.myappcommerce.adapter.ProductCategoryAdapter
+import br.com.msena.myappcommerce.model.ProductCategory
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -20,6 +24,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var navigationView: NavigationView
     lateinit var textTitle: TextView
     lateinit var textLogin: TextView
+    /*Categoria*/
+    lateinit var recyclerCategory: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +66,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(intent)
         }
 
+        /*Pegar nosso adapter de Categoria*/
+        recyclerCategory = findViewById(R.id.rv_main_product_category)
+
+        val arrayCategory = arrayListOf<ProductCategory>(
+            ProductCategory("1", "Camisetas"),
+            ProductCategory("2", "Calças"),
+            ProductCategory("3", "Meias"),
+            ProductCategory("4", "Sapatos"),
+            ProductCategory("5", "Luvas"),
+            ProductCategory("6", "Sandálias"),
+            ProductCategory("7", "Cintos")
+        )
+
+        val adapterCategory = ProductCategoryAdapter(arrayCategory, this)
+
+        recyclerCategory.adapter = adapterCategory
+        recyclerCategory.layoutManager = LinearLayoutManager(this,  LinearLayoutManager.HORIZONTAL, false)
+
     }
 
     /* Voltar  */
@@ -78,20 +103,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
             R.id.nav_account -> {
-                val intent = Intent(this,UserRegisterActivity::class.java)
+                val intent = Intent(this, UserProfileActivity::class.java)
                 startActivity(intent)
             }
-
-            /* Usado copara chamar o Perfil (temporariamente)*/
             R.id.nav_category -> {
-                val intent = Intent(this,UserProfileActivity::class.java)
+                val intent = Intent(this, ProductCategoryActivity::class.java)
                 startActivity(intent)
             }
-
-            /*
-            R.id.nav_category -> Toast.makeText(this, "Categori", Toast.LENGTH_LONG).show()
-
-             */
             R.id.nav_orders -> Toast.makeText(this, "Compras", Toast.LENGTH_LONG).show()
             R.id.nav_cart -> Toast.makeText(this, "Carrinho", Toast.LENGTH_LONG).show()
             R.id.nav_logout -> Toast.makeText(this, "Sair", Toast.LENGTH_LONG).show()

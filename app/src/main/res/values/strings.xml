@@ -30,6 +30,7 @@
     <string name="product_detail_tamanho">Tamanho</string>
     <string name="product_detail_button_comprar">COMPRAR</string>
     <string name="product_detail_descricao">Descrição</string>
+    <string name="product_category_title">Categoria</string>
 
     <!-- Cadastro de Usuario -->
     <string name="user_register_cadastrar">CADASTRAR</string>
@@ -56,6 +57,7 @@
     <string name="user_profile_cep">CEP</string>
     <string name="user_profile_title">Perfil</string>
     <string name="user_profile_atualizar">ATUALIZAR</string>
+
 
     <!--Perfil do Estados -->
     <string-array name="states">
