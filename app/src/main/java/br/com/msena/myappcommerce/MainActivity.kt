@@ -13,8 +13,12 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.msena.myappcommerce.adapter.ProductAdapter
 import br.com.msena.myappcommerce.adapter.ProductCategoryAdapter
+import br.com.msena.myappcommerce.model.Product
 import br.com.msena.myappcommerce.model.ProductCategory
+import br.com.msena.myappcommerce.model.ProductColor
+import br.com.msena.myappcommerce.model.ProductSize
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +30,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var textLogin: TextView
     /*Categoria*/
     lateinit var recyclerCategory: RecyclerView
+    /*Produto*/
+    lateinit var recyclerProduct: RecyclerView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,14 +58,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        /* Tela  ProductDetailActivity  */
-        val productItem: LinearLayout = findViewById(R.id.ll_product_item)
-        productItem.setOnClickListener{
-            val intent: Intent = Intent(this, ProductDetailActivity::class.java)
-            startActivity(intent)
-        }
 
-        textTitle
         textLogin = navigationView.getHeaderView(0).findViewById(R.id.header_profile_name)
         textLogin.setOnClickListener {
             val intent = Intent(this, UserLoginActivity::class.java)
@@ -83,8 +82,44 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         recyclerCategory.adapter = adapterCategory
         recyclerCategory.layoutManager = LinearLayoutManager(this,  LinearLayoutManager.HORIZONTAL, false)
+        recyclerProduct = findViewById(R.id.rv_main_product)
 
+        val adapterProduct = ProductAdapter(fillRvProduct(), this)
+
+        recyclerProduct.adapter = adapterProduct
+        recyclerProduct.layoutManager = LinearLayoutManager(this,  LinearLayoutManager.HORIZONTAL, false)
     }
+    /* Método temporario para cria o produto , que vai retornar uma lista de produtos
+    * apenas para preecher, enquanto não busca no banco de dados  */
+    fun fillRvProduct(): List<Product> {
+
+        val product1: Product = Product(
+            "1",
+            "Camiseta 89",
+            ProductCategory("id", "Camisetas"),
+            "Camiseta super leve para fazer exercicios.",
+            19.90,
+            arrayListOf(ProductColor("1", "Branco", "#ffffff"),
+            ProductColor("2", "Preta", "#000000")),
+            arrayListOf(ProductSize("1", "P"),
+            ProductSize("1", "M")),
+            emptyList())   /* Neste caso passa um array vazio, pois não gravos as imagens no array */
+
+        val product2: Product = Product(
+            "1",
+            "Calça Jeans",
+            ProductCategory("id", "Calças"),
+            "Calça impermeavel com proteção de chuva",
+            109.00,
+            arrayListOf(ProductColor("1", "Branco", "#ffffff"),
+            ProductColor("2", "Preta", "#000000")),
+            arrayListOf(ProductSize("1", "G"),
+            ProductSize("1", "GG")),
+            emptyList()) /* Neste caso passa um array vazio, pois não gravos as imagens no array */
+
+        return arrayListOf(product1, product2)
+    }
+
 
     /* Voltar  */
     override fun onBackPressed() {

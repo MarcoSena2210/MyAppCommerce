@@ -31,6 +31,7 @@ class ProductCategoryAdapter(val list: List<ProductCategory>, val context: Conte
         holder.title.text = category.title
     }
 
+    /* Cria o View Holder*/
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         /* Passamos o icon e titulo*/
         val icon: ImageView = itemView.findViewById(R.id.iv_category_icon)
