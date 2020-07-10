@@ -1,3 +1,5 @@
 package br.com.msena.myappcommerce.model
 
-data class ProductSize(val id : String, val size : String)
+import java.io.Serializable
+
+data class ProductSize (val id: String, val size: String) : Serializable

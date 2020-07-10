@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         recyclerCategory.adapter = adapterCategory
         recyclerCategory.layoutManager = LinearLayoutManager(this,  LinearLayoutManager.HORIZONTAL, false)
+
         recyclerProduct = findViewById(R.id.rv_main_product)
 
         val adapterProduct = ProductAdapter(fillRvProduct(), this)
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             "Camiseta 89",
             ProductCategory("id", "Camisetas"),
             "Camiseta super leve para fazer exercicios.",
-            19.90,
+            19.95,
             arrayListOf(ProductColor("1", "Branco", "#ffffff"),
             ProductColor("2", "Preta", "#000000")),
             arrayListOf(ProductSize("1", "P"),
